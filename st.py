@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import mysql.connector  
+import wordcloud as wc
 
 mydb = mysql.connector.connect(
   host = "localhost", 
@@ -27,10 +28,12 @@ st.markdown("""
     color: #2E2EFF;
     font-size: 50px;
     text-align: center;
+    font-weight: bold;
 }
 .overview {
-    color: #008080;
+    color: #d209e0;
     font-size: 30px;
+    font-weight: bold;
 }
 .description {
     font-size: 18px;
@@ -38,27 +41,23 @@ st.markdown("""
     line-height: 1.6;
     font-family: 'Times New Roman', serif;
 }
+.tools {
+    font-size: 12px;
+    color: #FFFFF4;
+    font-family: 'Times New Roman', serif;
+}
+.sql {
+    font-size: 18px;
+    color: #09e0bc;
+    line-height: 1.6;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+}
 .heading {
-    color: #FF2400;
+    color: #ffa200;
     font-size: 20px;
     font-family: 'Times New Roman', serif;
-    }
-div[data-testid="stTabs"] > div {
-    color: #DAF7A6;
-    font-size: 18px;
     font-weight: bold;
-    border: 1px solid #336699;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin: 2px;
-    transition: background-color 0.3s;
-}
-div[data-testid="stTabs"] > div.active {
-    color: #FFC300 ;
-    border: 2px solid #000080;
-}
-div[data-testid="stTabs"] > div:hover {
-    cursor: pointer;
 }
 </style>""", unsafe_allow_html = True)
 
@@ -73,18 +72,23 @@ Overview
 st.markdown("""
 <div class = description>
             Retail Orders Data typically contains information 
-            about customer orders, including order IDs, product details, quantities, prices, customer demographics, 
-            order dates, and delivery statuses. It helps analyze sales trends, customer behavior, 
+            about customer orders, including order id's, order dates, product details, quantities, prices, customer demographics, 
+            and delivery statuses. It helps analyze sales trends, customer behavior, 
             and supply chain efficiency.
         <br><br>
-<span class="tools">Tools Used:</span>
-<ul>
+<span class = "heading"> Tools Used: </span>
+<ul class = "tools">
     <li>VS Code</li>
     <li>Pandas</li>
     <li>MySQL</li>
     <li>Streamlit</li>
-</ul>
-</div>""", unsafe_allow_html=True)
+</ul> <br><br>
+</div>""", unsafe_allow_html = True)
+
+st.markdown("""
+<div class = "sql">
+    SQL Queries
+</div>""", unsafe_allow_html = True)
 
 # Queries Input
 tabs = st.tabs(["Given Queries", "Framed Queries"])
