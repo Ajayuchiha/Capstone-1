@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-import mysql.connector  
-import wordcloud as wc
+import mysql.connector
 
 mydb = mysql.connector.connect(
   host = "localhost", 
